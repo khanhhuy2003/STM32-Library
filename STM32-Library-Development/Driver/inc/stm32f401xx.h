@@ -14,10 +14,11 @@
 #define __vo volatile
 /**********************************START:Processor Specific Details **********************************/
 /*
- * ARM Cortex Mx Processor NVIC ISERx Register Addresses
+ * ARM Cortex Mx Processor NVIC ISERx Register Addresses, for enable interupt
+ * NVIC is controled by the CPU itself, so refer more to Cortex M4 user guide, not STM32 reference manual
  */
 
-#define NVIC_ISER0      ( (__vo uint32_t*)0xE000E100 )
+#define NVIC_ISER0      ( (__vo uint32_t*)0xE000E100 ) //each register control 32 IRQ number => only use 0 1 2 in stm32f4
 #define NVIC_ISER1      ( (__vo uint32_t*)0xE000E104 )
 #define NVIC_ISER2      ( (__vo uint32_t*)0xE000E108 )
 #define NVIC_ISER3      ( (__vo uint32_t*)0xE000E10C )
@@ -27,7 +28,7 @@
 #define NVIC_ISER7      ( (__vo uint32_t*)0xE000E11C )
 
 /*
- * ARM Cortex Mx Processor NVIC ICERx Register Addresses
+ * ARM Cortex Mx Processor NVIC ICERx Register Addresses, for clear/disable interupt
  */
 #define NVIC_ICER0      ( (__vo uint32_t*)0XE000E180 )
 #define NVIC_ICER1      ( (__vo uint32_t*)0XE000E184 )
@@ -196,7 +197,6 @@ typedef struct
     __vo uint32_t PMC;          /* SYSCFG Peripheral mode configuration register,       Address offset: 0x04    */
     __vo uint32_t EXTICR[4];    /* SYSCFG External interrupt configuration register,    Address offset: 0x08-14 */
     __vo uint32_t CMPCR;        /* SYSCFG Compensation cell control register,           Address offset: 0x20    */
-    __vo uint32_t CFGR;         /* SYSCFG Configuration register,                       Address offset: 0x2C    */
 }SYSCFG_RegDef_t;
 
 /*
@@ -414,6 +414,19 @@ typedef struct
 #define GPIO_PIN_RESET  RESET
 #define FLAG_SET        SET
 #define FLAG_RESET      RESET
+
+/*
+ * IQR number
+ */
+#define IRQ_NO_EXTI0       6
+#define IRQ_NO_EXTI1       7
+#define IRQ_NO_EXTI2       8
+#define IRQ_NO_EXTI3       9
+#define IRQ_NO_EXTI4       10
+#define IRQ_NO_EXTI5_9     23
+#define IRQ_NO_EXTI10_15   40
+
+
 
 
 #endif /* INC_STM32F401XX_H_ */
