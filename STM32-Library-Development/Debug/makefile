@@ -9,6 +9,7 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include Testing/src/subdir.mk
 -include Startup/subdir.mk
 -include Src/subdir.mk
 -include Driver/src/subdir.mk
@@ -50,6 +51,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 STM32-Library-Development.list \
 
+OBJCOPY_HEX += \
+STM32-Library-Development.hex \
+
 OBJCOPY_BIN += \
 STM32-Library-Development.bin \
 
@@ -61,8 +65,8 @@ all: main-build
 main-build: STM32-Library-Development.elf secondary-outputs
 
 # Tool invocations
-STM32-Library-Development.elf: $(OBJS) $(USER_OBJS) C:\Users\ASUS\Desktop\stm32-peripherals-library-development\STM32-Library-Development\STM32F401CCFX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "STM32-Library-Development.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\ASUS\Desktop\stm32-peripherals-library-development\STM32-Library-Development\STM32F401CCFX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32-Library-Development.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+STM32-Library-Development.elf: $(OBJS) $(USER_OBJS) C:\Users\ASUS\Desktop\STM32-Library\STM32-Library-Development\STM32F401CCFX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "STM32-Library-Development.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\ASUS\Desktop\STM32-Library\STM32-Library-Development\STM32F401CCFX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32-Library-Development.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -76,6 +80,11 @@ STM32-Library-Development.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_
 	@echo 'Finished building: $@'
 	@echo ' '
 
+STM32-Library-Development.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "STM32-Library-Development.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 STM32-Library-Development.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "STM32-Library-Development.bin"
 	@echo 'Finished building: $@'
@@ -83,10 +92,10 @@ STM32-Library-Development.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_T
 
 # Other Targets
 clean:
-	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) STM32-Library-Development.elf
+	-$(RM) $(OBJCOPY_HEX)$(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) STM32-Library-Development.elf
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

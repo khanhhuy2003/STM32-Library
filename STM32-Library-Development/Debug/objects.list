@@ -3,3 +3,4 @@
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Startup/startup_stm32f401ccfx.o"
+"./Testing/src/gpio_test.o"

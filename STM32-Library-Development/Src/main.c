@@ -18,13 +18,52 @@
  */
 
 #include <stdint.h>
+#include "stm32f401xx.h"
+#include "gpio.h"
 
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
-  #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-#endif
-
+void delay(void)
+{
+    for(uint32_t i = 0; i < 500000; i++);
+}
 int main(void)
 {
-    /* Loop forever */
-	for(;;);
+	GPIO_Handle_t GpioLed1, GpioLed2, GpioButton1;
+
+	// Cấu hình PA5
+	GpioLed1.pGPIOx = GPIOA;
+	GpioLed1.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_5;
+	GpioLed1.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
+	GpioLed1.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
+	GpioLed1.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
+	GpioLed1.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_NO_PUPD;
+	GPIO_Init(&GpioLed1);
+
+	// Cấu hình PA6
+	GpioLed2.pGPIOx = GPIOA;
+	GpioLed2.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_6;
+	GpioLed2.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_OUT;
+	GpioLed2.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
+	GpioLed2.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
+	GpioLed2.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_NO_PUPD;
+	GPIO_Init(&GpioLed2);
+
+    GpioButton1.pGPIOx = GPIOA;
+    GpioButton1.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_8;
+    GpioButton1.GPIO_PinConfig.GPIO_PinMode = GPIO_MODE_IN;
+	//GpioLed2.GPIO_PinConfig.GPIO_PinSpeed = GPIO_SPEED_FAST;
+	//GpioLed2.GPIO_PinConfig.GPIO_PinOPType = GPIO_OP_TYPE_PP;
+    GpioButton1.GPIO_PinConfig.GPIO_PinPuPdControl = GPIO_PIN_PU;
+	GPIO_Init(&GpioButton1);
+
+	while(1){
+
+	    if(GPIO_ReadFromInputPin(GPIOA, GPIO_PIN_NO_8) == 0) {  // Nếu nút được nhấn
+	        GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_5);
+	        GPIO_ToggleOutputPin(GPIOA, GPIO_PIN_NO_6);
+	        delay();
+	    }
+
+
+	}
+
 }
