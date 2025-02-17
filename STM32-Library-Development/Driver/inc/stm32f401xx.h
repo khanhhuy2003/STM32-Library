@@ -44,6 +44,8 @@
  */
 #define NVIC_PR_BASE_ADDR   ( (__vo uint32_t*)0XE000E400 )
 
+#define NO_PR_BITS_IMPLEMENTED    4
+
 /*
  * Base addresses of FLASH and SRAM memories
  */
@@ -425,6 +427,48 @@ typedef struct
 #define IRQ_NO_EXTI4       10
 #define IRQ_NO_EXTI5_9     23
 #define IRQ_NO_EXTI10_15   40
+
+/*
+ * Bit position definitions SPI_CR1
+ */
+#define SPI_CR1_CPHA        0
+#define SPI_CR1_CPOL        1
+#define SPI_CR1_MSTR        2
+#define SPI_CR1_BR          3
+#define SPI_CR1_SPE         6
+#define SPI_CR1_LSB_FIRST   7
+#define SPI_CR1_SSI         8
+#define SPI_CR1_SSM         9
+#define SPI_CR1_RX_ONLY     10
+#define SPI_CR1_DFF         11
+#define SPI_CR1_CRC_NEXT    12
+#define SPI_CR1_CRC_EN      13
+#define SPI_CR1_BIDI_OE     14
+#define SPI_CR1_BIDI_MODE   15
+
+/*
+ * Bit position definitions SPI_CR2
+ */
+#define SPI_CR2_RXDMAEN     0
+#define SPI_CR2_TXDMAEN     1
+#define SPI_CR2_SSOE        2
+#define SPI_CR2_FRF         4
+#define SPI_CR2_ERRIE       5
+#define SPI_CR2_RXNEIE      6
+#define SPI_CR2_TXEIE       7
+
+/*
+ * Bit position definitions SPI_SR
+ */
+#define SPI_SR_RX_NOT_EMPTY         0
+#define SPI_SR_TX_EMPTY             1
+#define SPI_SR_CHSIDE               2
+#define SPI_SR_UDR                  3
+#define SPI_SR_CRC_ERR              4
+#define SPI_SR_MODF                 5
+#define SPI_SR_OVR                  6
+#define SPI_SR_BSY                  7
+#define SPI_SR_FRE                  8
 
 
 

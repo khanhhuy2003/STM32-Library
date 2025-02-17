@@ -1,0 +1,11 @@
+spi.c:12:6:SPI_PeriClockControl	16	static
+spi.c:62:6:SPI_Init	24	static
+spi.c:101:6:SPI_DeInit	16	static
+spi.c:109:9:checkFlagBufferTx	16	static
+spi.c:115:6:SPI_SendData	24	static
+spi.c:141:9:checkFlagBufferRx	16	static
+spi.c:147:6:SPI_ReceiveData	24	static
+spi.c:191:9:SPI_GetFlagStatus	16	static
+spi.c:199:6:SPI_PeripheralControl	16	static
+spi.c:210:6:SPI_SSIConfig	16	static
+spi.c:222:6:SPI_SSOEConfig	16	static

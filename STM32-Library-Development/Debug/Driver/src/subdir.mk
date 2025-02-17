@@ -5,13 +5,16 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Driver/src/gpio.c 
+../Driver/src/gpio.c \
+../Driver/src/spi.c 
 
 OBJS += \
-./Driver/src/gpio.o 
+./Driver/src/gpio.o \
+./Driver/src/spi.o 
 
 C_DEPS += \
-./Driver/src/gpio.d 
+./Driver/src/gpio.d \
+./Driver/src/spi.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
