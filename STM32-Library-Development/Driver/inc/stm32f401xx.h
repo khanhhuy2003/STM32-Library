@@ -427,6 +427,9 @@ typedef struct
 #define IRQ_NO_EXTI4       10
 #define IRQ_NO_EXTI5_9     23
 #define IRQ_NO_EXTI10_15   40
+#define IRQ_NO_SPI1        35
+#define IRQ_NO_SPI2        36
+#define IRQ_NO_SPI3        51
 
 /*
  * Bit position definitions SPI_CR1
