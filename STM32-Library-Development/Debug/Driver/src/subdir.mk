@@ -6,14 +6,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../Driver/src/gpio.c \
+../Driver/src/i2c.c \
 ../Driver/src/spi.c 
 
 OBJS += \
 ./Driver/src/gpio.o \
+./Driver/src/i2c.o \
 ./Driver/src/spi.o 
 
 C_DEPS += \
 ./Driver/src/gpio.d \
+./Driver/src/i2c.d \
 ./Driver/src/spi.d 
 
 

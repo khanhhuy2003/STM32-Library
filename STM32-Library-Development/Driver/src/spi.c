@@ -296,8 +296,6 @@ void SPI_IRQHandling(SPI_Handle_t *pHandle){
 
 }
 
-
-
 /*
 * Other peripheral APIs
 */

@@ -1,4 +1,5 @@
 "./Driver/src/gpio.o"
+"./Driver/src/i2c.o"
 "./Driver/src/spi.o"
 "./Src/main.o"
 "./Src/syscalls.o"
