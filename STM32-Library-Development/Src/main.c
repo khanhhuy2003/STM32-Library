@@ -84,7 +84,6 @@ int main(void)
         // Wait until SPI transmission is complete
         while (SPIHandle.TxState == SPI_BUSY_IN_TX);
         GPIO_WriteToOutputPin(GPIOB, GPIO_PIN_NO_12, RESET);
-        // Small delay
         delay();
     }
 
