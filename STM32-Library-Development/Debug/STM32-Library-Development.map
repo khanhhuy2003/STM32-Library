@@ -101,17 +101,37 @@ Discarded input sections
                 0x0000000000000000       0x1e ./Driver/src/i2c.o
  .text.I2C_SlaveReceiveData
                 0x0000000000000000       0x1a ./Driver/src/i2c.o
+ .text.I2C_MasterSendDataInterruptMode
+                0x0000000000000000       0x86 ./Driver/src/i2c.o
+ .text.I2C_MasterReceiveDataInterruptMode
+                0x0000000000000000       0x8c ./Driver/src/i2c.o
+ .text.I2C_CloseSendData
+                0x0000000000000000       0x46 ./Driver/src/i2c.o
+ .text.I2C_CloseReceiveData
+                0x0000000000000000       0x5c ./Driver/src/i2c.o
+ .text.I2C_IRQInterruptConfig
+                0x0000000000000000      0x100 ./Driver/src/i2c.o
+ .text.I2C_IRQPriorityConfig
+                0x0000000000000000       0x54 ./Driver/src/i2c.o
+ .text.I2C_MasterHandleRXNEInterrupt
+                0x0000000000000000       0x98 ./Driver/src/i2c.o
+ .text.I2C_MasterHandleTXEInterrupt
+                0x0000000000000000       0x44 ./Driver/src/i2c.o
+ .text.I2C_EV_IRQHandling
+                0x0000000000000000      0x1b4 ./Driver/src/i2c.o
+ .text.I2C_ER_IRQHandling
+                0x0000000000000000      0x10c ./Driver/src/i2c.o
  .text.I2C_GetFlagStatus
                 0x0000000000000000       0x28 ./Driver/src/i2c.o
  .text.I2C_PeripheralControl
                 0x0000000000000000       0x38 ./Driver/src/i2c.o
  .text.I2C_ManageAcking
                 0x0000000000000000       0x38 ./Driver/src/i2c.o
- .debug_info    0x0000000000000000      0x7da ./Driver/src/i2c.o
- .debug_abbrev  0x0000000000000000      0x1b5 ./Driver/src/i2c.o
+ .debug_info    0x0000000000000000      0xae6 ./Driver/src/i2c.o
+ .debug_abbrev  0x0000000000000000      0x24e ./Driver/src/i2c.o
  .debug_aranges
-                0x0000000000000000       0x88 ./Driver/src/i2c.o
- .debug_ranges  0x0000000000000000       0x78 ./Driver/src/i2c.o
+                0x0000000000000000       0xd8 ./Driver/src/i2c.o
+ .debug_ranges  0x0000000000000000       0xc8 ./Driver/src/i2c.o
  .debug_macro   0x0000000000000000       0x8a ./Driver/src/i2c.o
  .debug_macro   0x0000000000000000      0xaae ./Driver/src/i2c.o
  .debug_macro   0x0000000000000000      0x174 ./Driver/src/i2c.o
@@ -123,10 +143,10 @@ Discarded input sections
  .debug_macro   0x0000000000000000      0x1df ./Driver/src/i2c.o
  .debug_macro   0x0000000000000000      0x63f ./Driver/src/i2c.o
  .debug_macro   0x0000000000000000       0xca ./Driver/src/i2c.o
- .debug_line    0x0000000000000000      0x810 ./Driver/src/i2c.o
- .debug_str     0x0000000000000000     0x6821 ./Driver/src/i2c.o
+ .debug_line    0x0000000000000000      0xcae ./Driver/src/i2c.o
+ .debug_str     0x0000000000000000     0x69a3 ./Driver/src/i2c.o
  .comment       0x0000000000000000       0x54 ./Driver/src/i2c.o
- .debug_frame   0x0000000000000000      0x230 ./Driver/src/i2c.o
+ .debug_frame   0x0000000000000000      0x3a8 ./Driver/src/i2c.o
  .ARM.attributes
                 0x0000000000000000       0x34 ./Driver/src/i2c.o
  .group         0x0000000000000000        0xc ./Driver/src/spi.o
